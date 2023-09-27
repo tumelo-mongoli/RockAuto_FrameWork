@@ -1,5 +1,7 @@
 package StepDefinitions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +14,7 @@ public class Steps {
 	public WebDriver driver;
 	public LoginPage lp;
 	
-	@Given("User Launch Chrome browser")
+	@Given("User Launch chrome browser")
 	public void user_launch_chrome_browser() {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver.exe");
 		driver =new ChromeDriver();
@@ -34,29 +36,37 @@ public class Steps {
 	}
 
 	@When("Click on Login")
-	public void click_on_login() {
-		lp.clickLogin();
-	}
-
-	@Then("Page Title should be {string}")
-	public void page_title_should_be(String title) {
+	public void click_on_login() throws InterruptedException {
 		
-		if (driver.getPageSource().contains("Login was unsuccessful")) {
-			driver.close();
+		lp.clickLogin();
+		Thread.sleep(1000);
+		if (driver.getPageSource().contains("Your store. Login")) 
+		{
+			lp.clickLogin();
 			Assert.assertTrue(false);
 		}
 		else 
 		{
-			Assert.assertEquals(title, driver.getTitle());
+			lp.clickDashboard();
+			Assert.assertTrue(false);
 		}
-		
+		Thread.sleep(3000);
 	}
 
+	/*
+	 * @Then("Then There should be a Log out link ") public void
+	 * page_should_have_link() throws InterruptedException {
+	 * 
+	 * if (driver.getPageSource().contains("Login was unsuccessful")) {
+	 * driver.close(); Assert.assertTrue(false); } else {
+	 * Assert.assertTrue(driver.getPageSource().contains("Logout"));
+	 * //Assert.assertEquals(lp.LogoutLink(), driver); }
+	 * 
+	 * Thread.sleep(3000); }
+	 */
 	@When("User click on Log out link")
-	public void user_click_on_log_out_link() {
+	public void user_click_on_log_out_link() throws InterruptedException {
 		lp.clickLogout();
-		//Thread.sleep(3000);
-
 
 	}
 

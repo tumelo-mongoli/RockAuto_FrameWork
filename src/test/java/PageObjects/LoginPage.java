@@ -26,9 +26,12 @@ public class LoginPage {
 	@CacheLookup
 	WebElement txtPassword;
 	
-	@FindBy(xpath="//input[@value='Log in']")
-	@CacheLookup
+	@FindBy(xpath="//button[@class='button-1 login-button']")	@CacheLookup
 	WebElement btnLogin;
+	
+	@FindBy(linkText=" Dashboard")
+	@CacheLookup
+	WebElement lnkDashboard;
 	
 	@FindBy(linkText="Logout")
 	@CacheLookup
@@ -54,11 +57,23 @@ public class LoginPage {
 		btnLogin.click();
 		
 	}
+
+
+	public void clickDashboard()
+	{
+		lnkDashboard.click();
+		
+	}
 	
 	public void clickLogout()
 	{
 		lnkLogout.click();
 		
+	}
+	
+	public void LogoutLink()
+	{
+		lnkLogout.isDisplayed();
 	}
 
 }
