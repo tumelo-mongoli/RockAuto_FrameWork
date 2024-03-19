@@ -12,25 +12,25 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
 
-  <dependencies> 
-	
-  
-	  <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
-<dependency>
-    <groupId>io.rest-assured</groupId>
-    <artifactId>rest-assured</artifactId>
-    <version>5.3.1</version>
-    <scope>test</scope>
-</dependency>
+  <dependencies>
 
-	     
-    <!-- https://mvnrepository.com/artifact/junit/junit -->
+      <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+      <dependency>
+          <groupId>io.rest-assured</groupId>
+          <artifactId>rest-assured</artifactId>
+          <version>5.4.0</version>
+          <scope>test</scope>
+      </dependency>
+
+
+
+      <!-- https://mvnrepository.com/artifact/junit/junit -->
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
@@ -76,7 +76,15 @@
     <scope>provided</scope>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/net.sourceforge.cobertura/cobertura -->
+      <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+      <dependency>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-cucumber7-jvm</artifactId>
+          <version>2.26.0</version>
+      </dependency>
+
+
+      <!-- https://mvnrepository.com/artifact/net.sourceforge.cobertura/cobertura -->
 <dependency>
     <groupId>net.sourceforge.cobertura</groupId>
     <artifactId>cobertura</artifactId>
@@ -85,12 +93,13 @@
 </dependency>
 
 
-<!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-<dependency>
-    <groupId>net.masterthought</groupId>
-    <artifactId>cucumber-reporting</artifactId>
-    <version>5.7.6</version>
-</dependency>
+      <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
+      <dependency>
+          <groupId>net.masterthought</groupId>
+          <artifactId>cucumber-reporting</artifactId>
+          <version>5.8.0</version>
+      </dependency>
+
 
 
 <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin --> 
@@ -109,29 +118,39 @@
 </dependency>
 
 
-<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
-<dependency>
-    <groupId>org.apache.pdfbox</groupId>
-    <artifactId>pdfbox</artifactId>
-    <version>3.0.0-RC1</version>
-</dependency>
-
-    <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>31.0.1-jre</version>
-    </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+      <dependency>
+          <groupId>org.apache.pdfbox</groupId>
+          <artifactId>pdfbox</artifactId>
+          <version>3.0.1</version>
+      </dependency>
 
 
-<dependency>
-    <groupId>com.sun</groupId>
-    <artifactId>tools</artifactId>
-    <version>17</version>
-	<scope>system</scope>
-	<systemPath>C:\Program Files\Java\jdk-17\lib\tools-1.7.0.jar</systemPath>
-</dependency> 
+      <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>33.0.0-jre</version>
+      </dependency>
 
-    
+
+
+      <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+      <dependency>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest</artifactId>
+          <version>2.2</version>
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>com.sun</groupId>
+          <artifactId>tools</artifactId>
+          <version>21</version>
+          <scope>system</scope>
+          <systemPath>C:/Program Files/Java/jdk-21/lib/tools.jar</systemPath>
+      </dependency>
+
   </dependencies>
 
   <build>

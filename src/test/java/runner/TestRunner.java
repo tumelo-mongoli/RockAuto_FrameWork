@@ -11,8 +11,8 @@ import io.cucumber.junit.CucumberOptions;
 		features="src/test/resources/Feature",
 		glue="StepDefinitions",
 		dryRun=false,
-		plugin= {"pretty", "html:test-output"}
-			
+		plugin= {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+
 	)
 
 public class TestRunner {

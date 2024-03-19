@@ -2,12 +2,19 @@ package StepDefinitions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.TakesScreenshot;
 
 import PageObjects.LoginPage;
 import io.cucumber.java.en.*;
+
+import java.io.ByteArrayInputStream;
 
 public class Steps {
 	
@@ -16,7 +23,7 @@ public class Steps {
 	
 	@Given("User Launch chrome browser")
 	public void user_launch_chrome_browser() {
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
 		driver =new ChromeDriver();
 		
 		lp=new LoginPage(driver);
@@ -27,6 +34,8 @@ public class Steps {
 	public void user_opens_url(String url) {
 		driver.get(url);
 
+		byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Landing Page", new ByteArrayInputStream(screenshot));
 	}
 
 	@When("User enters Email as {string} and Password as {string}")
@@ -73,7 +82,16 @@ public class Steps {
 	@Then("close browser")
 	public void close_browser() {
 		driver.quit();
-
 	}
 
+	@After
+	public void TearDown(Scenario scenario)
+	{
+		if (scenario.isFailed())
+		{
+			byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));
+		}
+		driver.quit();
+	}
 }
